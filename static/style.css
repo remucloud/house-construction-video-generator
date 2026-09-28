@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>House Construction Video Generator</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>House Construction Video Generator</h1>
+      <p>Upload a front-view photo of a house and generate a short construction-sequence video.</p>
+
+      <form action="/generate" method="post" enctype="multipart/form-data">
+        <label class="upload-box">
+          <input type="file" name="photo" accept="image/*" required />
+          <span>Select a house photo</span>
+        </label>
+        <button type="submit">Generate video</button>
+      </form>
+
+      {% if video_url %}
+        <div class="video-box">
+          <video controls autoplay muted>
+            <source src="{{ video_url }}" type="video/mp4" />
+          </video>
+        </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
